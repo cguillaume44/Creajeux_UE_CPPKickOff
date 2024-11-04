@@ -114,11 +114,11 @@ void ACPPKickOffCharacter::Tick(float DeltaTime)
 		// If we hit something, log it
 		if (Hit.bBlockingHit)
 		{
-			UE_LOG(LogTemplateCharacter, Log, TEXT("Hit: %s"), *Hit.GetActor()->GetActorLabel());
-
 			// If we hit a MyCubeActor, log the RandomNumber
 			if (Hit.GetActor())
 			{
+				UE_LOG(LogTemplateCharacter, Log, TEXT("Hit: %s"), *Hit.GetActor()->GetActorLabel());
+
 				AMyCubeActor* CubeActor = Cast<AMyCubeActor>(Hit.GetActor());
 
 				if (CubeActor)
@@ -150,6 +150,10 @@ void ACPPKickOffCharacter::Tick(float DeltaTime)
 					ResetCubeActor();
 				}
 			}
+		}
+		else
+		{
+			ResetCubeActor();
 		}
 	}
 }
